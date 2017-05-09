@@ -1,0 +1,41 @@
+
+<div class="container-fluid container-full-height">
+  <div class="row">
+    <div class="col-lg-3">
+      <div class="fb-login">
+        <p>Facebook account</p>
+        <button type="button" (click)="loginFb()" class="btn btn-primary button-inside">Login</button>
+        <button type="button" (click)="logoutFb()" class="btn btn-primary button-inside">Logout</button>
+
+        <div class="fb-info" [hidden]=!fbInfo.show>
+            <img src={{fbInfo.src}} width="50px" height="50px">
+            <div class="fb-info-text">
+              <p>Name: {{fbInfo.name}}</p>
+              <p>Email: {{fbInfo.email}}</p>
+              <p>Id: {{fbInfo.id}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-full-height col-lg-9" style="display:block">
+    
+    <ngx-datatable
+          style="height:inherit;"
+          class="material fullscreen"
+          [rows]="rows"
+          [columns]="columns"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [rowHeight]="35"
+          [scrollbarV]="true"
+          [scrollbarH]="true"
+      >
+
+        
+          
+        </ngx-datatable>
+        
+    </div>
+  </div>
+</div>

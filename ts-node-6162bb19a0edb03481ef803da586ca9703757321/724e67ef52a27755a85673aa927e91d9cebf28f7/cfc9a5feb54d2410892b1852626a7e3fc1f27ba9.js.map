@@ -1,0 +1,1 @@
+{"version":3,"file":"/home/xubaxabu/Workspace/gr/client-angular/angular-seed-fix/tools/utils/project/sample_util.ts","sources":["/home/xubaxabu/Workspace/gr/client-angular/angular-seed-fix/tools/utils/project/sample_util.ts"],"names":[],"mappings":";;AAAA;AAEA,CAAC;AAFD,wBAEC","sourcesContent":["export function myUtil() {\n  // Code goes here\n}\n"]}
