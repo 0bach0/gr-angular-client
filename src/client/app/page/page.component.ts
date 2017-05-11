@@ -2,7 +2,7 @@ import { Component,Injectable, OnInit, ChangeDetectorRef } from '@angular/core';
 import { RequestServerService } from '../shared/service/request.service';
 import { ViewEncapsulation } from '@angular/core';
 import { DataFetch } from "./datafetch";
-
+import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 
 
 /**
@@ -17,6 +17,9 @@ import { DataFetch } from "./datafetch";
 })
 
 export class PageComponent implements OnInit{
+  date2 = new Date("Thu Jan 01 2015 00:00:00 GMT-0500 (EST)");
+  gmtDate = '2015-01-01T00:00:00.000Z';
+  myVar='2015-01-01';
   rows :any;
   show_data=false;
   selected = [''];

@@ -11,6 +11,8 @@ import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { TokenModule } from './token/token.module';
 import { Angular2SocialLoginModule } from "angular2-social-login";
+import { NguiDatetimePickerModule } from '@ngui/datetime-picker';
+
 let providers = {
     "facebook": {
       "clientId": "268585663526955",
@@ -21,7 +23,7 @@ let providers = {
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule,PageModule, HomeModule, TokenModule,SharedModule.forRoot(), Angular2SocialLoginModule],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule,PageModule, HomeModule, TokenModule,SharedModule.forRoot(), Angular2SocialLoginModule,NguiDatetimePickerModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,
