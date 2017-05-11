@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AboutModule } from './about/about.module';
+import { PageModule } from './page/page.module';
 import { HomeModule } from './home/home.module';
 import { SharedModule } from './shared/shared.module';
 import { TokenModule } from './token/token.module';
@@ -20,7 +21,7 @@ let providers = {
 
 
 @NgModule({
-  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule, HomeModule, TokenModule,SharedModule.forRoot(), Angular2SocialLoginModule],
+  imports: [BrowserModule, HttpModule, AppRoutingModule, AboutModule,PageModule, HomeModule, TokenModule,SharedModule.forRoot(), Angular2SocialLoginModule],
   declarations: [AppComponent],
   providers: [{
     provide: APP_BASE_HREF,

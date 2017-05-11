@@ -1,0 +1,57 @@
+:host {
+  display: block;
+  padding: 0;
+}
+
+
+[hidden] { display: none !important;}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  margin-bottom: 0;
+  margin-top: 0.83em;
+}
+
+.container-full-height{
+  height: -webkit-calc(100vh - 50px);
+  height: -moz-calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  padding-left:10px !important;
+  padding-bottom:0px !important;
+  border: 0 solid #e1e1e1;
+  border-left-width: 1px;
+  border-top-width: 1px
+}
+
+.col-lg-3{
+  border: 0 solid #e1e1e1;
+  border-top-width: 1px;
+}
+
+.full-height{
+  height: 100vh;
+}
+
+.material {
+    height: initial;
+}
+
+.datatable-header{
+  height:initial !important;
+}
+
+.center-cell{
+  text-align: center !important;
+}
+
+.ngx-datatable .datatable-body-cell{
+  user-select: initial !important;
+  -webkit-user-select:initial !important;
+  -moz-user-select:initial !important;
+  -ms-user-select: initial !important;
+}
+.active{
+  background-color:#d0daef;
+}

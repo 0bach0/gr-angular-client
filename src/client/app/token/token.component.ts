@@ -56,7 +56,7 @@ export class TokenComponent implements OnInit{
   }
   ngOnInit( ) {
     this.fetchData( );
-    setInterval(() => { this.fetchData( ); }, 1000 * 60 * 3 );
+    setInterval(() => { this.fetchData( ); }, 1000 * 60 * 1 );
     
   }
 
