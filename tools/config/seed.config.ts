@@ -377,6 +377,7 @@ export class SeedConfig {
     defaultJSExtensions: true,
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
+      'ng2-date-time-picker': 'node_modules/ng2-date-time-picker',
       'angular2-social-login': 'node_modules/angular2-social-login/dist/bundles/angular2-social-login.min.js',
       '@swimlane/ngx-datatable': 'node_modules/@swimlane/ngx-datatable/release/index.js',
       '@angular/animations': 'node_modules/@angular/animations/bundles/animations.umd.js',
@@ -407,6 +408,10 @@ export class SeedConfig {
       '*': 'node_modules/*'
     },
     packages: {
+      'ng2-date-time-picker': {
+          main: 'index.js',
+          defaultExtension: 'js'
+      }
     }
   };
 

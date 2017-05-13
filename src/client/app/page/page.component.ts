@@ -3,7 +3,7 @@ import { RequestServerService } from '../shared/service/request.service';
 import { ViewEncapsulation } from '@angular/core';
 import { DataFetch } from "./datafetch";
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
-
+import * as moment from "moment";
 
 /**
  * This class represents the lazy loaded PageComponent.
@@ -17,9 +17,17 @@ import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 })
 
 export class PageComponent implements OnInit{
-  date2 = new Date("Thu Jan 01 2015 00:00:00 GMT-0500 (EST)");
-  gmtDate = '2015-01-01T00:00:00.000Z';
-  myVar='2015-01-01';
+  showPage = {
+      name:'',
+      time_limit:new Date,
+      id:''
+  };
+
+  columnPages = [
+    { name:'Id',prop: 'id' },
+    { name:'Name',prop: 'name' },
+  ];
+  rowPages = {};
   rows :any;
   show_data=false;
   selected = [''];
@@ -32,6 +40,7 @@ export class PageComponent implements OnInit{
   fbInfo ={name:'',email:'',id:'',src:'',show:false};
 
   constructor( public requestServerService: RequestServerService,public ref: ChangeDetectorRef ) {
+    
   }
   public convertdata(x:any) {
     x.forEach((element:any) => {
@@ -49,6 +58,7 @@ export class PageComponent implements OnInit{
     this.requestServerService.get('https://voip.dev.owslab.io/api/pages').subscribe(
                                   data => {
                                     this.rows = this.convertdata(data.message);
+                                    this.ref.detectChanges();
                                   },
                                     err => {
                                         // Log errors if any
@@ -58,14 +68,64 @@ export class PageComponent implements OnInit{
   ngOnInit( ) {
     this.fetchData( );
     setInterval(() => { this.fetchData( ); }, 1000 * 60 * 3 );
-    
+    this.showPage.time_limit = new Date();
   }
 
   onActivate(event:any) {
     // console.log('Activate Event', event.row.id,event.row.name,event.row.time_limit,event.row.last_update);
     this.show_data=true;
-    console.log(event);
+    this.showPage.id = event.row.id;
+    
+    var date = new Date(parseInt(event.row.time_limit+'000'));
+    this.showPage.time_limit = date;
+    this.ref.detectChanges();
+    var tmp = event.row.name.match(/>(.*?)<\/a>/g);
+    tmp = tmp[0]
+    this.showPage.name =tmp.substring(1, tmp.indexOf('</a>'));
   }
 
-  
+  public setMoment(moment: any): any {
+    this.showPage.time_limit = moment;
+    // Do whatever you want to the return object 'moment'
+  }
+
+  updateId(){
+    var sendData = {id:this.showPage.id,time_limit:Math.round(this.showPage.time_limit.valueOf()/1000)};
+    console.log(sendData);
+    this.requestServerService.post('https://voip.dev.owslab.io/api/page',sendData).subscribe(
+                                  data => {
+                                    console.log(data);
+                                    this.fetchData();
+                                  },
+                                    err => {
+                                        // Log errors if any
+                                        console.log(err);
+                                    });
+  }
+  deletePage(){
+    var sendData = {id:this.showPage.id};
+    console.log(sendData);
+    this.requestServerService.post('https://voip.dev.owslab.io/api/deletepage',sendData).subscribe(
+                                  data => {
+                                    console.log(data);
+                                    this.fetchData();
+                                  },
+                                    err => {
+                                        // Log errors if any
+                                        console.log(err);
+                                    });
+  }
+
+  searchPage(){
+    var sendData = {name:this.showPage.name};
+    this.requestServerService.post('https://voip.dev.owslab.io/api/searchpage',sendData).subscribe(
+                                  data => {
+                                    this.rowPages=data.data;
+                                    console.log(data);
+                                  },
+                                    err => {
+                                        // Log errors if any
+                                        console.log(err);
+                                    });
+  }
 }

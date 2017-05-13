@@ -19,12 +19,11 @@ export class RequestServerService {
         .map(this.extractData)
         .catch(this.handleError);
   }
-  public post( url:string,str:String ) {
+  public post( url:string,body:Object ) {
     let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
     let options = new RequestOptions({ headers: headers });
 
-    let data = {data:str};
-    return this.http.post(url,data, headers).map((res: Response) => res.json())
+    return this.http.post(url,body, headers).map((res: Response) => res.json())
           .catch(this.handleError);
   }
 

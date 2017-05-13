@@ -55,3 +55,31 @@ h2 {
 .active{
   background-color:#d0daef;
 }
+.control-bar{
+  padding:0px !important;
+  
+}
+.button-down{
+  /*position: absolute;
+  bottom:0px;
+  width: 100%;
+  left:0px;
+  right:0px;
+  background-color:#3385ff;*/
+  display: flex;
+  justify-content: flex-end;
+  margin-top:5px;
+}
+
+.button-inside{
+  width:30%;
+  margin-right:5px;
+  border:0px;
+  background-color: #3385ff;
+  color: white;
+}
+
+.form-control{
+    border-radius: 0px !important;
+
+}

@@ -6,10 +6,10 @@ import { RequestServerService } from '../shared/service/request.service';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FormsModule,ReactiveFormsModule }   from '@angular/forms';
-import { NguiDatetimePickerModule } from '@ngui/datetime-picker';
+import { DateTimePickerModule } from 'ng2-date-time-picker';
 
 @NgModule({
-  imports: [CommonModule, PageRoutingModule,NgxDatatableModule, Angular2SocialLoginModule,FormsModule,ReactiveFormsModule,NguiDatetimePickerModule],
+  imports: [CommonModule, PageRoutingModule,NgxDatatableModule, Angular2SocialLoginModule,FormsModule,ReactiveFormsModule,DateTimePickerModule],
   declarations: [PageComponent],
   exports: [PageComponent],
   providers:[RequestServerService]

@@ -1,28 +1,41 @@
 
 <div class="container-fluid container-full-height">
   <div class="row">
-    <div class="col-lg-3">
+    <div class="col-lg-3 container-full-height control-bar">
       <div class="">
         
-        <div class="" [hidden]=!show_data>
-            <div class="">
-              <p>Hoi sinh vien</p>
-              <div class="input-group">
-                <!--<span class="input-group-addon" id="basic-addon1">Id</span>-->
-                <input type="text" class="form-control" placeholder="Id" aria-describedby="basic-addon1">
-              </div>
-              
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Id" aria-describedby="basic-addon1">
-              </div>
+        <div class="">
+            <div class="input-group">
+              <input type="text" [(ngModel)]="showPage.name" class="form-control" placeholder="Trường Đại học Bách Khoa Hà Nội" aria-describedby="basic-addon1">
+              <span class="input-group-addon" id="basic-addon1" style="border-radius:0px !important; border-left:0px !important;" (click)="searchPage()"><i class="fa fa-search" aria-hidden="true"></i></span>
             </div>
-   
-            <button type="button" (click)="loginFb()" class="btn btn-primary button-inside">Login</button>
-            <button type="button" (click)="logoutFb()" class="btn btn-primary button-inside">Logout</button>
-        </div>
-        
+              
+            <input type="text" [(ngModel)]="showPage.id" class="form-control" placeholder="255222197949144" aria-describedby="basic-addon1">
+              
 
-        
+            <input class="form-control" [ngModel]="showPage.time_limit " [mode]=" 'popup' " [dateTimePicker]="showPage.time_limit" (dateTimePickerChange)="setMoment($event)" readonly />
+            
+        </div>
+
+        <!--<ngx-datatable
+          style="height:200px;"
+          class="material"
+          [rows]="rowPages"
+          [columns]="columnPages"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [rowHeight]="35"
+          [scrollbarV]="true"
+          [scrollbarH]="true"
+          [selected]="selected"
+          [selectionType]="'single'"
+        >-->
+        <!--</ngx-datatable>-->
+
+        <div class="button-down">
+              <button type="button" (click)="updateId()" [disabled]="showPage.id==''" class="btn button-inside">Add/Update</button>
+              <button type="button" (click)="deletePage()" [disabled]="showPage.id==''" class="btn button-inside">Delete</button>
+        </div>          
       </div>
     </div>
 
@@ -50,12 +63,12 @@
           </ngx-datatable-column>
           <ngx-datatable-column name="Time limit" prop="time_limit" [width]="120">
             <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value*1000 | date: 'd/MM/yy HH:MM'}}
+                {{value*1000 | date: 'EEEE MMM dd y HH:mm:ss'}}
             </ng-template>
           </ngx-datatable-column>
           <ngx-datatable-column name="Last update" prop="last_update" [width]="120">
             <ng-template let-value="value" ngx-datatable-cell-template>
-                {{value*1000 | date: 'd/MM/yy HH:MM'}}
+                {{value*1000 | date: 'EEEE MMM dd y HH:mm:ss'}}
             </ng-template>
           </ngx-datatable-column>
         
