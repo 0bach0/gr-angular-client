@@ -377,6 +377,7 @@ export class SeedConfig {
     defaultJSExtensions: true,
     paths: {
       [this.BOOTSTRAP_MODULE]: `${this.APP_BASE}${this.BOOTSTRAP_MODULE}`,
+      '@ngui/popup':'node_modules/@ngui/popup/dist/popup.umd.js',
       'ng2-date-time-picker': 'node_modules/ng2-date-time-picker',
       'angular2-social-login': 'node_modules/angular2-social-login/dist/bundles/angular2-social-login.min.js',
       '@swimlane/ngx-datatable': 'node_modules/@swimlane/ngx-datatable/release/index.js',
@@ -411,6 +412,14 @@ export class SeedConfig {
       'ng2-date-time-picker': {
           main: 'index.js',
           defaultExtension: 'js'
+      },
+      '@ngui/popup': { 
+          main: 'popup.umd.js', 
+          defaultExtension: 'js' 
+      },
+      'ng2-overlay':{
+          main: 'ng2-overlay.umd.js', 
+          defaultExtension: 'js' 
       }
     }
   };

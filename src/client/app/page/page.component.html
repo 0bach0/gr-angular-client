@@ -3,39 +3,40 @@
   <div class="row">
     <div class="col-lg-3 container-full-height control-bar">
       <div class="">
-        
+
+
         <div class="">
             <div class="input-group">
-              <input type="text" [(ngModel)]="showPage.name" class="form-control" placeholder="Trường Đại học Bách Khoa Hà Nội" aria-describedby="basic-addon1">
+              <input type="text" [(ngModel)]="showPage.name" (keyup.enter)="searchPage()" class="form-control" placeholder="Trường Đại học Bách Khoa Hà Nội" aria-describedby="basic-addon1">
               <span class="input-group-addon" id="basic-addon1" style="border-radius:0px !important; border-left:0px !important;" (click)="searchPage()"><i class="fa fa-search" aria-hidden="true"></i></span>
             </div>
-              
             <input type="text" [(ngModel)]="showPage.id" class="form-control" placeholder="255222197949144" aria-describedby="basic-addon1">
-              
-
             <input class="form-control" [ngModel]="showPage.time_limit " [mode]=" 'popup' " [dateTimePicker]="showPage.time_limit" (dateTimePickerChange)="setMoment($event)" readonly />
-            
         </div>
-
-        <!--<ngx-datatable
-          style="height:200px;"
-          class="material"
-          [rows]="rowPages"
-          [columns]="columnPages"
-          [columnMode]="'force'"
-          [headerHeight]="50"
-          [rowHeight]="35"
-          [scrollbarV]="true"
-          [scrollbarH]="true"
-          [selected]="selected"
-          [selectionType]="'single'"
-        >-->
-        <!--</ngx-datatable>-->
 
         <div class="button-down">
               <button type="button" (click)="updateId()" [disabled]="showPage.id==''" class="btn button-inside">Add/Update</button>
               <button type="button" (click)="deletePage()" [disabled]="showPage.id==''" class="btn button-inside">Delete</button>
         </div>          
+
+        <div class="search-result" [hidden]=!showSearch>
+          <ngx-datatable
+            style="height:inherit; padding-left:5px;"
+            class="material"
+            [rows]="rowPages"
+            [columns]="columnPages"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [rowHeight]="35"
+            [scrollbarV]="true"
+            [selected]="selected"
+            [selectionType]="'single'"
+            (activate)="onActivate($event,'nodate')"
+            emptyMessage= "'Loading'"
+
+          >
+          </ngx-datatable>
+        </div>
       </div>
     </div>
 
@@ -53,7 +54,7 @@
           [scrollbarH]="true"
           [selected]="selected"
           [selectionType]="'single'"
-          (activate)="onActivate($event)"
+          (activate)="onActivate($event,'includedate')"
     >
           <ngx-datatable-column name="Id" prop="id" [maxWidth]="150">
             

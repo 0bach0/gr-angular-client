@@ -81,5 +81,8 @@ h2 {
 
 .form-control{
     border-radius: 0px !important;
+}
 
+.search-result{
+  height:400px ;
 }

@@ -11,6 +11,7 @@ import { DateTimePickerModule } from 'ng2-date-time-picker';
 @NgModule({
   imports: [CommonModule, PageRoutingModule,NgxDatatableModule, Angular2SocialLoginModule,FormsModule,ReactiveFormsModule,DateTimePickerModule],
   declarations: [PageComponent],
+  // entryComponents:[NguiPopupModule],
   exports: [PageComponent],
   providers:[RequestServerService]
 })

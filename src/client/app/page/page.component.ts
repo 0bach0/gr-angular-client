@@ -1,7 +1,8 @@
-import { Component,Injectable, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component,Injectable, OnInit, ChangeDetectorRef,ViewChild } from '@angular/core';
 import { RequestServerService } from '../shared/service/request.service';
 import { ViewEncapsulation } from '@angular/core';
 import { DataFetch } from "./datafetch";
+import {HomeComponent} from "../home/home.component"
 import { Validators, FormGroup, FormArray, FormBuilder } from '@angular/forms';
 import * as moment from "moment";
 
@@ -17,6 +18,7 @@ import * as moment from "moment";
 })
 
 export class PageComponent implements OnInit{
+  showSearch = false;
   showPage = {
       name:'',
       time_limit:new Date,
@@ -24,8 +26,7 @@ export class PageComponent implements OnInit{
   };
 
   columnPages = [
-    { name:'Id',prop: 'id' },
-    { name:'Name',prop: 'name' },
+    { name:'Searching result',prop: 'name' }
   ];
   rowPages = {};
   rows :any;
@@ -71,13 +72,16 @@ export class PageComponent implements OnInit{
     this.showPage.time_limit = new Date();
   }
 
-  onActivate(event:any) {
+  onActivate(event:any,type:String) {
     // console.log('Activate Event', event.row.id,event.row.name,event.row.time_limit,event.row.last_update);
     this.show_data=true;
     this.showPage.id = event.row.id;
     
-    var date = new Date(parseInt(event.row.time_limit+'000'));
-    this.showPage.time_limit = date;
+    if(type==='includedate'){
+      var date = new Date(parseInt(event.row.time_limit+'000'));
+      this.showPage.time_limit = date;
+    }
+    
     this.ref.detectChanges();
     var tmp = event.row.name.match(/>(.*?)<\/a>/g);
     tmp = tmp[0]
@@ -117,10 +121,13 @@ export class PageComponent implements OnInit{
   }
 
   searchPage(){
+    console.log(this.showSearch);
+    this.showSearch = true;
+    console.log(this.showSearch);
     var sendData = {name:this.showPage.name};
     this.requestServerService.post('https://voip.dev.owslab.io/api/searchpage',sendData).subscribe(
                                   data => {
-                                    this.rowPages=data.data;
+                                    this.rowPages=this.convertdata(data.data);
                                     console.log(data);
                                   },
                                     err => {
