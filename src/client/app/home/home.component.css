@@ -1,13 +1,88 @@
 :host {
   display: block;
-  padding: 0 16px;
+  padding: 0;
 }
 
-input {
-  width: 250px;
+
+[hidden] { display: none !important;}
+
+h2 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+  margin-bottom: 0;
+  margin-top: 0.83em;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0 0 0 8px;
+.container-full-height{
+  height: -webkit-calc(100vh - 50px);
+  height: -moz-calc(100vh - 50px);
+  height: calc(100vh - 50px);
+  padding-left:10px !important;
+  padding-bottom:0px !important;
+  border: 0 solid #e1e1e1;
+  border-left-width: 1px;
+  border-top-width: 1px
+}
+
+.col-lg-3{
+  border: 0 solid #e1e1e1;
+  border-top-width: 1px;
+}
+
+.full-height{
+  height: 100vh;
+}
+
+.material {
+    height: initial;
+}
+
+.datatable-header{
+  height:initial !important;
+}
+
+.center-cell{
+  text-align: center !important;
+}
+
+.ngx-datatable .datatable-body-cell{
+  user-select: initial !important;
+  -webkit-user-select:initial !important;
+  -moz-user-select:initial !important;
+  -ms-user-select: initial !important;
+}
+.active{
+  background-color:#d0daef;
+}
+.control-bar{
+  padding:0px !important;
+  
+}
+.button-down{
+  /*position: absolute;
+  bottom:0px;
+  width: 100%;
+  left:0px;
+  right:0px;
+  background-color:#3385ff;*/
+  display: flex;
+  justify-content: flex-end;
+  margin-top:5px;
+}
+
+.button-inside{
+  width:30%;
+  margin-right:5px;
+  border:0px;
+  background-color: #3385ff;
+  color: white;
+}
+
+.form-control{
+    border-radius: 0px !important;
+}
+
+.search-result{
+  height:400px ;
 }

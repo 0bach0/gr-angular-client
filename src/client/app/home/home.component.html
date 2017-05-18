@@ -1,10 +1,40 @@
-<p>Howdy! Here's a list of awesome computer scientists. Do you know any others? Add to the list yourself.</p>
 
-<form (submit)="addName()">
-  <input [(ngModel)]="newName" name="newName" placeholder="Awesome Computer Scientist">
-  <button type="submit">Add</button>
-</form>
+<div class="container-fluid container-full-height">
+  <div class="row">
+    <div class="col-lg-4 container-full-height control-bar">
+      <iframe src="https://6327c31e94f6d69706912738e0eb7a1d.ap-southeast-1.aws.found.io/app/kibana#/visualize/edit/9b09be60-3b7c-11e7-9358-13d5a9c82746?embed=true&_g=(refreshInterval%3A(display%3A'2%20seconds'%2Cpause%3A!f%2Cvalue%3A10000)%2Ctime%3A(from%3Anow-1w%2Fw%2Cmode%3Arelative%2Cto%3Anow))" height="49%" width="100%"></iframe>
+      <iframe src="https://6327c31e94f6d69706912738e0eb7a1d.ap-southeast-1.aws.found.io/app/kibana#/visualize/edit/4b5be4b0-3b77-11e7-9358-13d5a9c82746?embed=true&_g=(refreshInterval%3A(display%3A'2%20seconds'%2Cpause%3A!f%2Cvalue%3A10000)%2Ctime%3A(from%3Anow-1w%2Fw%2Cmode%3Arelative%2Cto%3Anow))" height="49%" width="100%"></iframe>
+    </div>
 
-<ul>
-  <li *ngFor="let name of names">{{name}}</li>
-</ul>
+    <div class="container-full-height col-lg-8" style="display:block">
+        <ngx-datatable
+        
+        class="material"
+        [rows]="rows"
+        
+        [columns]="columns"
+        [headerHeight]="30"
+        [columnMode]="'force'"
+        [footerHeight]="50"
+        
+        [rowHeight]="'auto'"
+    >
+    <!---->
+        <!--[scrollbarH]="true"-->
+          <ngx-datatable-column name="Page" prop="from" [maxWidth]="150">
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Created time" prop="created_time" [maxWidth]="90">
+            <ng-template let-value="value" ngx-datatable-cell-template>
+                {{value*1000 | date: 'short'}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Type" prop="type_text" [maxWidth]="60">
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Content" prop="message" [minWidth]="250">
+          </ngx-datatable-column>
+          
+    </ngx-datatable>
+  
+    </div>
+  </div>
+</div>
